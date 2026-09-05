@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>十二生肖大冒险 | Zodiac Odyssey</title>
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <!-- 主菜单 -->
+  <div id="menu-screen" class="screen active">
+    <h1 class="game-title">
+      <span class="t-logo">🐉</span> 十二生肖大冒险 <span class="t-logo">🐰</span>
+    </h1>
+    <p class="subtitle">Q 版横版闯关 · 探索武器 · 拯救十二宫</p>
+    <button class="btn big" id="new-game-btn">开始冒险</button>
+    <button class="btn" id="continue-btn">继续游戏</button>
+    <button class="btn" id="how-btn">玩法说明</button>
+    <div id="save-tip" class="save-tip"></div>
+  </div>
+
+  <!-- 角色选择 -->
+  <div id="select-screen" class="screen">
+    <h2>选择你的生肖英雄</h2>
+    <div id="zodiac-grid" class="zodiac-grid"></div>
+    <div class="select-foot">
+      <button class="btn disabled" id="confirm-btn">出战！</button>
+      <button class="btn ghost" id="back-from-select">返回</button>
+    </div>
+  </div>
+
+  <!-- 玩法说明 -->
+  <div id="how-screen" class="screen">
+    <h2>玩法说明</h2>
+    <div class="how-content">
+      <p>🎯 在随机生成的迷宫关卡中探索，击败小动物敌人，打开隐藏宝箱获取武器。</p>
+      <p>🎮 方向键 / WASD 移动与跳跃，空格 / J 攻击，P 暂停。</p>
+      <p>🪙 收集金币，找到出口传送门进入下一关。</p>
+      <p>💪 越往后的关卡敌人越强，血量越高，武器也越稀有。</p>
+      <p>💾 关卡通过自动存档，可随时从菜单继续。</p>
+    </div>
+    <button class="btn ghost" id="back-from-how">返回</button>
+  </div>
+
+  <!-- 游戏画布 -->
+  <div id="game-wrap">
+    <canvas id="game" width="1280" height="720"></canvas>
+    <div id="hud" class="hidden">
+      <div id="hud-bar">
+        <div class="hud-item"><span class="lab">生命</span><div id="hp-bar"><div id="hp-fill"></div></div></div>
+        <div class="hud-item"><span class="lab">武器</span><div id="weapon-badges"></div></div>
+        <div class="hud-item"><span class="lab">金币</span><div id="coin-count">🪙 0</div></div>
+        <div class="hud-item"><span class="lab">关卡</span><div id="level-count">1</div></div>
+      </div>
+      <div id="minimap"></div>
+    </div>
+
+    <!-- 触屏按键 -->
+    <div id="touch-controls" class="hidden">
+      <div class="dpad">
+        <button class="tbtn" data-key="left">◀</button>
+        <button class="tbtn jump" data-key="jump">⬆</button>
+        <button class="tbtn" data-key="right">▶</button>
+      </div>
+      <div class="abuttons">
+        <button class="tbtn attack" data-key="attack">⚔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 暂停 -->
+  <div id="pause-screen" class="screen">
+    <h2>已暂停</h2>
+    <button class="btn" id="resume-btn">继续</button>
+    <button class="btn" id="save-exit-btn">保存并退出</button>
+    <button class="btn ghost" id="quit-btn">放弃本关退出</button>
+  </div>
+
+  <!-- 过关结算 -->
+  <div id="stage-clear-screen" class="screen">
+    <h2 class="clear-title">✨ 关卡通过 ✨</h2>
+    <div id="clear-stats" class="clear-stats"></div>
+    <button class="btn big" id="next-level-btn">进入第 <span id="next-level-num">2</span> 关</button>
+  </div>
+
+  <!-- 游戏结束 -->
+  <div id="gameover-screen" class="screen">
+    <h2 class="go-title">冒险失败</h2>
+    <div id="go-stats" class="clear-stats"></div>
+    <button class="btn big" id="retry-btn">重新挑战</button>
+    <button class="btn ghost" id="go-menu-btn">返回菜单</button>
+  </div>
+
+  <!-- 提示 Toast -->
+  <div id="toast" class="hidden"></div>
+
+<style id="ui-styles"></style>
+<script src="main.js?v=4"></script>
+</body>
+</html>
