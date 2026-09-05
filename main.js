@@ -64,8 +64,9 @@ document.querySelectorAll('.tbtn').forEach(btn=>{
   btn.addEventListener('pointercancel', on(false));
   btn.addEventListener('pointerleave', on(false));
 });
-// 防止触屏滚动
-addEventListener('touchstart', e=>e.preventDefault(), {passive:false});
+// 说明：不再全局 preventDefault touchstart，
+// 否则会拦截 click 事件导致手机端按钮无法点击。
+// 滚动/缩放手势改由 CSS `touch-action` 控制。
 
 /* ---------- 十二生肖数据 & Q 版绘制 ---------- */
 const ZODIAC = [
